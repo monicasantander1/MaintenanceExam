@@ -16,6 +16,9 @@ namespace MaintenanceExam.PageObjects
         private readonly By _prospectivePolicyStateDropdownLocator = By.Id("State");
         private readonly By _submitLocator = By.XPath("//button[text()='Submit']");
         private readonly By _zipCodeLocator = By.Id("ZipCode");
+        private readonly By _homeInterestLocator = By.XPath("//label[text()='Home']");
+        private readonly By _languagePreferenceDropdownLocator = By.Id("LanguagePreference");
+        private readonly By _confirmationMessageLocator = By.XPath("//h3[contains(text(),'Thank')]");
 
         public GetAQuotePage(IWebDriver driver) : base(driver)
         {
@@ -40,6 +43,8 @@ namespace MaintenanceExam.PageObjects
             SetDropdownByText(_preferredContactMethodDropdownLocator, "Email");
             SetDropdownByText(_prospectivePolicyStateDropdownLocator, "Texas");
             SendKeys(_zipCodeLocator, "78249");
+            Click(_homeInterestLocator);
+            SetDropdownByText(_languagePreferenceDropdownLocator, "English");
             if (autoInterest)
             {
                 Click(_autoInterestLocator);
@@ -49,6 +54,14 @@ namespace MaintenanceExam.PageObjects
                 Click(_otherInterestLocator);
             }
             Click(_submitLocator);
+        }
+        /// <summary>
+        /// Confirmation Message after submission
+        /// </summary>
+        /// <returns>Confirmation Message</returns>
+        public string ConfirmationMessage()
+        {
+            return GetText(_confirmationMessageLocator);
         }
     }
 }

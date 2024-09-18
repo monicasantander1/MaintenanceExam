@@ -18,6 +18,12 @@ namespace MaintenanceExam.TestCases.InsuranceQuote
             Driver.Value!.Url = "https://www-qa.mybranchqa.org/insurance/personal/request-a-quote";
 
             new GetAQuotePage(Driver.Value!).CreateRequest(true, false);
+
+            GetAQuotePage getAQuotePage = new GetAQuotePage(Driver.Value!);
+
+            string confirmationMessageResults = getAQuotePage.ConfirmationMessage();
+
+            Assert.Pass(confirmationMessageResults, "Confirmation Message does display.");
         }
     }
 }
