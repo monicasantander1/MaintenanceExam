@@ -7,6 +7,10 @@ namespace MaintenanceExam.PageObjects
         private readonly By _logInLocator = By.XPath("//button[contains(.,'Log In')]");
         private readonly By _passwordLocator = By.Id("Password");
         private readonly By _usernameLocator = By.Id("Username");
+        private readonly By _searchBoxLocator = By.CssSelector("div.search-field input");
+        private readonly By _routingNumberLocator = By.CssSelector("div.pull-right strong");
+        private readonly By _productServicesLocator = By.XPath("//a[text()='Products & Services']");
+        private readonly By _myApplications = By.XPath("//a[contains(text(),'My Applications')]");
 
         public LoginPage(IWebDriver driver) : base(driver)
         {
